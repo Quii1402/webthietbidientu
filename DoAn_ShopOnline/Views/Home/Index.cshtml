@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<section class="slider">
+    <div class="container-view">
+        <div class="slider-content">
+            <div class="slider-content-left">
+                <div class="slider-content-left-top-container">
+                    <div class="slider-content-left-top">
+                        <a href=""><img src="~/Asset2/uploads/slider1.png" alt="" /></a>
+                        <a href=""><img src="~/Asset2/uploads/slider2.png" alt="" /></a>
+                        <a href=""><img src="~/Asset2/uploads/slider3.png" alt="" /></a>
+                        <a href=""><img src="~/Asset2/uploads/slider4.png" alt="" /></a>
+                        <a href=""><img src="~/Asset2/uploads/slider5.png" alt="" /></a>
+                    </div>
+                    <div class="slider-content-left-top-btn">
+                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="slider-content-left-bottom">
+                    <ul>
+                        <li class="active">Sắm Tivi Sony </li>
+                        <li> Sắm Tủ Lạnh </li>
+                        <li>Hỗ Trợ Mùa Dịch</li>
+                        <li>Apple Wacth S6 </li>
+                        <li>Laptop Tựu Trường </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="slider-content-right">
+                <ul>
+                    <li><a href=""><img src="~/Asset2/uploads/img1.png" alt="" /></a></li>
+                    <li><a href=""><img src="~/Asset2/uploads/img2.png" alt="" /></a></li>
+                    <li><a href=""><img src="~/Asset2/uploads/img3.png" alt="" /></a></li>
+                    <li><a href=""><img src="~/Asset2/uploads/img4.png" alt="" /></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="baner-one">
+    <div class="container1">
+        <img src="~/Asset2/uploads/baner1.jpg" alt="" />
+    </div>
+</section>
+<!-----------------slider-product------------>
+<section class="slider-product-one">
+    <div class="container">
+       
+
+        @Html.Partial("_Top4New", DoAn_ShopOnline.Models.BUS.ShopOnlineBUS.Top4New())
+        <div class="row">
+            <div class="banner">
+                <div class="col-sm-6">
+                    <img src="~/Asset2/uploads/baner-tt.png"/>
+                </div>
+                <div class="col-sm-6">
+                    <img src="~/Asset2/uploads/banner-tt1.png" />
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_TopHot", DoAn_ShopOnline.Models.BUS.ShopOnlineBUS.TopHot())
+    </div>
+</section>

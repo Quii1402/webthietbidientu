@@ -1,0 +1,125 @@
+﻿@model IEnumerable<ShopOnlineConnection.GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<h1>Phiếu Đặt Hàng : </h1>
+<form style="width:100%; margin:auto;" method="post" action="~/ThanhToan/Them"> 
+    <input type="Text" style="width:50%; margin-left:25%;" maxlength="50" placeholder="Nhập tên người nhận" required name="nguoinhan"/> <br />
+    <input type="number" style="width:50%; margin-left:25%;" maxlength="12" placeholder="Nhập số điện thoại người nhận" required name="sdt" /> <br/>
+    <input type="Text" style="width:50%; margin-left:25%;" maxlength="50" placeholder="Nhập địa chỉ người nhận" required name="diachi" /> <br />
+    <span style="width:50%; margin-left:25%;" name="tongtien">Tổng tiền : @ViewBag.TongTien</span><br />
+    <input style="width:50%; margin-left:25%;" type="submit" value="Đặt hàng" />
+</form>
+<hr style="height:40px;" />
+<div class="listbank inside" id="listbank">
+    <a href="javascript:void(0)" data-code="KLB" data-name="NH TMCP Kiên Long" data-card="VISA,JCB,MASTERCARD;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-klb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="PVCB" data-name="NH TMCP Đại chúng" data-card="VISA,MASTERCARD,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-pvcb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="BIDV" data-name="NH TMCP Đầu Tư và Phát Triển Việt Nam" data-card="JCB,VISA,MASTERCARD;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-bidv"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="TECHCOMBANK" data-name="NH TMCP Kỹ thương Việt Nam" data-card="VISA,MASTERCARD,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-techcombank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="SACOMBANK" data-name="NH TMCP Sài Gòn Thương Tín" data-card="MASTERCARD,JCB,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-sacombank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="TPB" data-name="NH TMCP Tiên Phong" data-card="MASTERCARD,VISA,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-tpb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="HDB" data-name="NH TMCP Phát triển nhà TP HCM" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-hdb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="SHB" data-name="NH TMCP Sài Gòn Hà Nội" data-card="VISA,JCB,MASTERCARD;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-shb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="ANZ" data-name="NH TNHH MTV ANZ Việt Nam" data-card="JCB,VISA,MASTERCARD;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-anz"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="EXIMBANK" data-name="NH TMCP Xuất Nhập Khẩu" data-card="VISA,MASTERCARD,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-eximbank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="SC" data-name="NH TNHH MTV Standard Chartered (Việt Nam)" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-sc"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="MB" data-name="NH TMCP Quân Đội" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-mb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="HOMECREDIT" data-name="Home Credit Vietnam" data-card="VISA,JCB,MASTERCARD;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-hc"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="ACB" data-name="NH TMCP Á Châu" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-acb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="VIETINBANK" data-name="NH TMCP Công Thương Việt Nam" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-vietinbank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="HSBC" data-name="NH TNHH MTV HSBC (Việt Nam)" data-card="MASTERCARD,JCB,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-hsbc"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="VIB" data-name="NH Quốc tế" data-card="MASTERCARD,VISA,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-vib"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="NAB" data-name="NH TMCP Nam Á" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-nab"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="OCB" data-name="NH Phương Đông" data-card="JCB,VISA,MASTERCARD;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-ocb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="BVB" data-name="NH TMCP Bản Việt" data-card="MASTERCARD,VISA,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-bvb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="MARITIMEBANK" data-name="NH TMCP Hàng Hải" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-maritimebank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="CTB" data-name="NH CitiBank Việt Nam" data-card="MASTERCARD,JCB,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-ctb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="VPBANK" data-name="NH TMCP Việt Nam Thịnh Vượng" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-vpbank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="SCB" data-name="NH TMCP Sài Gòn" data-card="MASTERCARD,VISA,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-scb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="VCB" data-name="NH TMCP Ngoại Thương Việt Nam" data-card="VISA,JCB,MASTERCARD,AMERICAN_EXPRESS;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-vcb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="SHINHANBANK" data-name="NH TNHH MTV Shinhan Việt Nam" data-card="JCB,MASTERCARD,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-shinhanbank"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="LVB" data-name="NH Bưu Điện Liên Việt" data-card="MASTERCARD,VISA,JCB;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-lvb"></i>
+    </a>
+    <a href="javascript:void(0)" data-code="FE" data-name="FE CREDIT" data-card="MASTERCARD,JCB,VISA;" onclick="ChooseBankSetCardType(this)">
+        <i class="icontg-fe"></i>
+    </a>
+</div>
+@foreach (var item in Model)
+{
+    // từ bên shop.details . Gửi ma san pham , ten san pham va gia san pham
+    // tu db lay len so luong . soluong * gia ra tien . Cong tat ca tien ra tong tien
+    <div class="row">
+        <div class="product well">
+            <div class="col-md-3">
+                <div class="image">
+                    @Html.Partial("_AvartaDetails", DoAn_ShopOnline.Models.BUS.ShopOnlineBUS.LoadAvartaImg(item.MaSanPham.ToString()))
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="caption">
+                     @Html.Partial("_GioHang", DoAn_ShopOnline.Models.BUS.ShopOnlineBUS.ChiTiet(item.MaSanPham.ToString()))
+                     <label>Số lượng : </label> <span>@item.SoLuong</span> <br />
+                    <span>Tổng tiền : @item.TongTien</span>
+                    <hr>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+}
+
